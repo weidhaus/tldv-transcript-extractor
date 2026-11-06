@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "tl;dv Transcript Extractor",
+  "version": "1.0.0",
+  "description": "Extracts full transcripts from tl;dv meeting pages (handles virtualized/lazy-loaded transcript blocks).",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "https://tldv.io/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Extract tl;dv Transcript"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://tldv.io/app/meetings/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
